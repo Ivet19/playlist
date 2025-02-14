@@ -1,11 +1,6 @@
 export const isTitleEmpty = (songTitle: string): boolean => {
-  let isEmpty: boolean;
+  const isEmpty = songTitle.length === 0;
 
-  if (songTitle.length === 0) {
-    isEmpty = true;
-  } else {
-    isEmpty = false;
-  }
   return isEmpty;
 };
 
@@ -13,32 +8,20 @@ export const doesTitleExist = (
   songTitle: string,
   songTitles: string[]
 ): boolean => {
-  let doesExist: boolean;
-  if (songTitles.includes(songTitle)) {
-    doesExist = true;
-  } else {
-    doesExist = false;
-  }
+  const doesExist = songTitles.includes(songTitle);
+
   return doesExist;
 };
 
 export const isTitleShort = (songTitle: string): boolean => {
-  let isShort: boolean;
-  if (songTitle.length < 3) {
-    isShort = true;
-  } else {
-    isShort = false;
-  }
+  const isShort = songTitle.length < 3;
+
   return isShort;
 };
 
 export const isPlaylistFull = (songTitles: string[]): boolean => {
-  let isFull: boolean;
-  if (songTitles.length >= 5) {
-    isFull = true;
-  } else {
-    isFull = false;
-  }
+  const isFull = songTitles.length >= 5;
+
   return isFull;
 };
 
@@ -51,8 +34,7 @@ export const sortSongs = (songTitles: string[]): void => {
 };
 
 export const getSongsCount = (songTitles: string[]): number => {
-  let songsCount: number;
-  songsCount = songTitles.length;
+  const songsCount = songTitles.length;
   return songsCount;
 };
 
@@ -68,19 +50,19 @@ export const getErrorMessage = (errorCode: string): string => {
 
   switch (errorCode) {
     case "required":
-      console.log((errorMessage = "No has introducido ningún título"));
+      errorMessage = "No has introducido ningún título";
       break;
     case "exists":
-      console.log((errorMessage = "La canción ya existe"));
+      errorMessage = "La canción ya existe";
       break;
     case "too-short":
-      console.log((errorMessage = "El título es demasiado corto"));
+      errorMessage = "El título es demasiado corto";
       break;
     case "limit":
-      console.log((errorMessage = "La playlist está llena"));
+      errorMessage = "La playlist está llena";
       break;
     default:
-      console.log((errorMessage = "La informaicón intruducida no es válida"));
+      errorMessage = "La informaicón intruducida no es válida";
   }
   return errorMessage;
 };
